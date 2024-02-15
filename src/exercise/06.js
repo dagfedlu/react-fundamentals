@@ -2,15 +2,14 @@
 // http://localhost:3000/isolated/exercise/06.js
 
 import * as React from 'react'
-import {useRef, useState} from 'react'
+import {useState} from 'react'
 
 function UsernameForm({onSubmitUsername}) {
   const [uname, setUname] = useState(null)
-  const inputRef = useRef(null)
   // event handler
   const handleSubmit = event => {
     event.preventDefault()
-    onSubmitUsername(inputRef.current.value)
+    onSubmitUsername(uname)
   }
   const handleChange = e => {
     const value = e.target.value.toLowerCase()
@@ -24,7 +23,6 @@ function UsernameForm({onSubmitUsername}) {
         <input
           id="userName"
           type="text"
-          ref={inputRef}
           onChange={handleChange}
           value={uname}
         />
